@@ -29,10 +29,6 @@ function EditContact(props){
     const newContactList = contacts.filter(contact => id !== contact.id);
     newContactList.push(newContact);
     props.setContacts(newContactList);
-    setEditMode(false);
-  }
-
-  function handleChange(){
     setEditMode(true);
   }
 
@@ -40,13 +36,18 @@ function EditContact(props){
     <Section>
       <Box>
       <Heading size={4} align="center">Edit Contact</Heading>
-      <form onSubmit={handleSubmit} onChange={handleChange}>
+      <form 
+        onSubmit={handleSubmit} 
+        onChange={() => setEditMode(false)}
+        >
         <Form.Field>
           <Form.Label>Name</Form.Label>
           <Form.Control>
             <Form.Input
               value={name}
               onChange={(e) => setName(e.target.value)}
+              rounded={true}
+              color="primary"
             />
           </Form.Control>
         </Form.Field>
@@ -56,6 +57,8 @@ function EditContact(props){
             <Form.Input
               value={mobile}
               onChange={(e) => setMobile(e.target.value)}
+              rounded={true}
+              color="primary"
             />
           </Form.Control>
         </Form.Field>
@@ -66,6 +69,8 @@ function EditContact(props){
               <Form.Select
                 value={type}
                 onChange={(e) => setType(e.target.value)}
+                rounded={true}
+                color="primary"
               >
               <option value="Personal">Personal</option>
               <option value="Office">Office</option>
@@ -76,6 +81,8 @@ function EditContact(props){
                 value={profileUrl}
                 onChange={(e) => setProfileUrl(e.target.value)}
                 placeholder="Profile Picture URL"
+                rounded={true}
+                color="primary"
               />
             </Form.Control>
           </Form.Field>
@@ -91,7 +98,7 @@ function EditContact(props){
           </Form.Control>
           <Form.Control align="right">
             <Button color="danger" rounded to={"/"} renderAs={ Link } mr="2">Cancel</Button>
-            <Button color="primary" rounded submit><strong>Save</strong></Button>
+            <Button color="primary" rounded submit disabled={editMode}><strong>Save</strong></Button>
           </Form.Control>
         </Form.Field>
       </form>

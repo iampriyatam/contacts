@@ -8,6 +8,7 @@ function AddContact(props){
   const [type, setType] = useState("Personal");
   const [isWhatsapp, setIsWhatsapp] = useState(false);
   const [profileUrl, setProfileUrl] = useState("");
+  const [editMode, setEditMode] = useState(true);
 
   function handleSubmit(e){
     e.preventDefault();
@@ -27,13 +28,18 @@ function AddContact(props){
     <Section>
       <Box>
       <Heading size={4} align="center">Add New Contact</Heading>
-      <form onSubmit={handleSubmit}>
+      <form 
+        onSubmit={handleSubmit}
+        onChange={() => setEditMode(false)}
+        >
         <Form.Field>
           <Form.Label>Name</Form.Label>
           <Form.Control>
             <Form.Input
               value={name}
               onChange={(e) => setName(e.target.value)}
+              rounded={true}
+              color="primary"
             />
           </Form.Control>
         </Form.Field>
@@ -43,6 +49,8 @@ function AddContact(props){
             <Form.Input
               value={mobile}
               onChange={(e) => setMobile(e.target.value)}
+              rounded={true}
+              color="primary"
             />
           </Form.Control>
         </Form.Field>
@@ -53,6 +61,8 @@ function AddContact(props){
               <Form.Select
                 value={type}
                 onChange={(e) => setType(e.target.value)}
+                rounded={true}
+                color="primary"
               >
               <option value="Personal">Personal</option>
               <option value="Office">Office</option>
@@ -63,6 +73,8 @@ function AddContact(props){
                 value={profileUrl}
                 onChange={(e) => setProfileUrl(e.target.value)}
                 placeholder="Profile Picture URL"
+                rounded={true}
+                color="primary"
               />
             </Form.Control>
           </Form.Field>
@@ -72,13 +84,14 @@ function AddContact(props){
             <Form.Checkbox
               checked={isWhatsapp}
               onChange={(e) => setIsWhatsapp(e.target.checked)}
+              color="primary"
             >
             On WhatsApp
             </Form.Checkbox>
           </Form.Control>
           <Form.Control align="right">
             <Button color="danger" rounded to={"/"} renderAs={ Link } mr="2">Cancel</Button>
-            <Button color="primary" rounded submit><strong>Save</strong></Button>
+            <Button color="primary" rounded submit disabled={editMode}><strong>Save</strong></Button>
           </Form.Control>
         </Form.Field>
       </form>
