@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 function Header(){
   return(
-    <Block mb="0" p="2" className='header'>
-      <Heading to={"/"} renderAs={ Link }>Contacts</Heading>
+    <Block mb="0" p="4" className='header'>
+      <Heading to={"/"} renderAs={ Link } style={{"color": "#ffffff"}}>Contacts</Heading>
       <Button to={"/add-contact"} renderAs={ Link } rounded="true" pull="right">
         <BsPlusLg />
       </Button>

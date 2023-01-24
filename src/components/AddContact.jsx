@@ -22,6 +22,7 @@ function AddContact(props){
       profileUrl : profileUrl
     }
     props.setContacts(prev => [...prev, newContact]);
+    setEditMode(true);
   }
 
   return (

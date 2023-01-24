@@ -1,9 +1,12 @@
 #root {
   max-width: 600px;
-  margin: 0 auto;
-  min-height: 100vh;
+  margin: 2rem auto;
+  min-height: 80vh;
   background: #f5f5f5;
+  border-radius: 2rem;
 }
 .header{
   background: #00b89c;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
 }
